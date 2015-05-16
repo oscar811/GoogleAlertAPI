@@ -71,25 +71,21 @@ namespace Google
                 if (script.StartsWith(SCRIPT_JSON_TAG))
                 {
                     string json_str = script.Substring(script.IndexOf(SCRIPT_JSON_TAG) + SCRIPT_JSON_TAG.Length, script.Length - SCRIPT_JSON_TAG.Length -1);
-//Utility.Util.LogMessageToFile(json_str);
                     JArray json = JArray.Parse(json_str);
                     if (json[1] == null)
                     {
                         break;
                     }                    
-//Utility.Util.LogMessageToFile("\r\n"+json.ToString());                    
                     JToken alert_item_token = json[1];
                     if (!IsNullOrEmpty(alert_item_token))
                     {
                         foreach (var alert_item in alert_item_token[1])
                         {
                             AlertTable[alert_item[1].ToString()] = alert_item[2][6][0][11].ToString();
-//Utility.Util.LogMessageToFile(alert_item[1].ToString() + ":" + alert_item[2][6][0][11]);
                         }
                     }
                     auth_id = json[3].ToString();
                     auth_token = json[2][6][0][14].ToString();
-//Utility.Util.LogMessageToFile(auth_id);
                 }
             }
             if (string.IsNullOrEmpty(auth_id) || string.IsNullOrEmpty(auth_token))
