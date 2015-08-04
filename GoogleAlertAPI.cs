@@ -342,6 +342,7 @@ namespace Google
             HtmlAgilityPack.HtmlNode loginform = doc.GetElementbyId("gaia_loginform");
             HtmlAgilityPack.HtmlNodeCollection inputElements = loginform.SelectNodes("//input");
             List<KeyValuePair<string, string>> paramList = new List<KeyValuePair<string, string>>();
+            bool hasPassword = false;
             foreach (HtmlAgilityPack.HtmlNode input in inputElements)
             {
                 string name = input.GetAttributeValue("name", string.Empty);
@@ -352,9 +353,14 @@ namespace Google
                 }
                 else if (name == "Passwd")
                 {
+                    hasPassword = true;
                     value = password;
                 }
                 paramList.Add(new KeyValuePair<string, string>(name, value));
+            }
+            if (!hasPassword)
+            {
+                paramList.Add(new KeyValuePair<string, string>("Passwd", password));
             }
             return paramList;
         }
