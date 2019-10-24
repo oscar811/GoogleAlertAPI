@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Google
+namespace Sallsa.Agent.Jobs.RecurringJobs.DealersMonitoring.Api.Google
 {
     public partial class GoogleAlertAPI
     {
