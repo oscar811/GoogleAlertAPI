@@ -11,7 +11,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Sallsa.Agent.Jobs.RecurringJobs.DealersMonitoring.Api.Google
+namespace Google
 {
     public partial class GoogleAlertAPI
     {
